@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import AuthService from "../../services/auth.service";
+import AuthService from "./../services/auth.service";
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -92,10 +92,10 @@ const Register = () => {
           disabled={(
             user.password &&
             user.password.length >= 8 &&
-            user.password === user.passwordConf &&
-            user.firstName &&
-            user.lastName &&
-            user.email
+            user.password === user.passwordConf
+            // user.firstName &&
+            // user.lastName &&
+            // user.email
           ) ? false : true}
         />
       </form>
