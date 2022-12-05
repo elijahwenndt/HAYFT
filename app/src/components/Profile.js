@@ -6,6 +6,8 @@ import { useState, useEffect } from "react";
 const Profile = () => {
   const [ state, dispatch ] = useGlobalState();
   const [postData, setPostData] = useState([]);
+  const [emoji, setEmoji] = useState('');
+  const [textContent, setTextContent] = useState('');
 
   useEffect(() => {
     async function getData() {
@@ -26,6 +28,21 @@ const Profile = () => {
     }
     getData();
   }, []);
+
+  async function sendData() {
+    let options = {
+      url: "posts/",
+      method: "POST",
+      data: {
+        emoji: emoji,
+        text_content: textContent,
+        author: state.currentUser.user_id
+      },
+
+    };
+    let resp = await request(options);
+  }
+
   console.log(postData)
   return (
     <div>
