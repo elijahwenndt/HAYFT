@@ -13,26 +13,23 @@ export default function App() {
   function handleClick(text) {
     setPage(text);
   }
-  if (page === "Home") {
-    return (
-      <GlobalProvider>
-      <HomePage handleClick={handleClick}/>
-      </GlobalProvider>
-    );
-  }
-  if (page === "YourJourney") {
-    return (
-      <GlobalProvider>
-      <Postpage handleClick={handleClick}/>
-      </GlobalProvider>
-      );
+  // if (page === "Home") {
+  //   return (
+  //     // <GlobalProvider>
+  //     <HomePage handleClick={handleClick}/>
+  //     // </GlobalProvider>
+  //   );
+  // }
+  // if (page === "YourJourney") {
+  //   return (
+  //     // <GlobalProvider>
+  //     <Postpage handleClick={handleClick}/>
+  //     // </GlobalProvider>
+  //     );
   }
   return (
     <>
-      {/* <Navbar handleClick={handleClick}/>
-     if (page === "Home") {
-     return <HomePage />;
-   } */}
+      
     </>
   )
 }
