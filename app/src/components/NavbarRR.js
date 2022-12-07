@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useGlobalState } from "../context/GlobalState";
+import AuthService from "./../services/auth.service";
 
 function NavBar() {
   const [ state, dispatch ] = useGlobalState();
@@ -30,6 +31,14 @@ function NavBar() {
               <Link to="/profile">Profile</Link>
             </li>
           )
+        }
+        {
+          state.currentUser && (
+            <li>
+              <div></div>
+            </li>
+          )
+
         }
       </ul>
     </nav>
