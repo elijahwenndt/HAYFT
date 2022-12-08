@@ -3,6 +3,8 @@ import { useGlobalState } from "../context/GlobalState";
 import AuthService from "./../services/auth.service";
 import { useNavigate } from "react-router-dom";
 
+
+
 function NavBar(props) {
   const [state, dispatch] = useGlobalState();
 
@@ -18,38 +20,33 @@ function NavBar(props) {
   };
   return (
     <nav>
-      <ul
-        style={{
-          display: "flex",
-          flexFlow: "row nowrap",
-          justifyContent: "space-evenly",
-          listStyle: "none",
-        }}
-      >
-        <li>
-          <Link to="/">Home</Link>
-        </li>
+      <div className="container my-3 sticky-top text-white">
+        <div className="row text-center align-items-center hover text-white bg-primary rounded p-2">
+        <h4 id="links" className="col-2 fw-bold hover">
+          <Link to="/Home">HAYFT</Link>
+        </h4>
         {!state.currentUser && (
-          <li>
+          <div id="links" className="col-4 text-start hover text-white">
             <Link to="/login">Login</Link>
-          </li>
+          </div>
         )}
         {!state.currentUser && (
-          <li>
+          <div id="links" className="col-4 text-end hover text-white">
             <Link to="/register">Register</Link>
-          </li>
+          </div>
         )}
         {state.currentUser && (
-          <li>
+          <div id="links" className="col-4 text-start hover text-white">
             <Link to="/profile">Profile</Link>
-          </li>
+          </div>
         )}
         {state.currentUser && (
-          <button className="button" onClick={() => logout()}>
+          <div id="links" className="col-4 text-end hover text-white" onClick={() => logout()}>
             Logout
-          </button>
+          </div>
         )}
-      </ul>
+      </div>
+      </div>
     </nav>
   );
 }

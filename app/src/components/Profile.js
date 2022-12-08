@@ -1,7 +1,7 @@
 import React from "react";
 import { useGlobalState } from "../context/GlobalState";
 import request from "../services/api.request";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Picker from "emoji-picker-react";
 import { format } from "date-fns";
 import parseJSON from "date-fns/parseJSON";
@@ -14,7 +14,7 @@ const Profile = () => {
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [textContent, setTextContent] = useState("");
   // const [input, setInput] = useState("")
-
+  const textboxRef = useRef(null)
   const onEmojiClick = (emojiObject, event) => {
     // console.log(event);
     setChosenEmoji(emojiObject);
@@ -35,14 +35,7 @@ const Profile = () => {
     }
     getData();
   }, []);
-  // console.log(postData);
-  // async function deleteData() {
-  //   let options = {
-  //     url: `posts/${postData.id}`,
-  //     method: "DELETE",
 
-  //   }
-  // }
   async function sendData() {
     let options = {
       url: "posts/",
@@ -63,13 +56,14 @@ const Profile = () => {
     return dateFormatted;
   }
 
-  // async function handleDelete(post) {
-  //   let options = {
-  //     url: `posts/${post.id}`,
-  //     method: "DELETE",
-  //   };
-  //   await request(options);
-  // }
+  async function handleDelete(post) {
+    let options = {
+      url: `posts/${post.id}`,
+      method: "DELETE",
+    };
+    let resp = await request(options);
+    setPostData(postData.filter(p => p.id !== post.id))
+  }
 
   return (
     <div>
@@ -81,6 +75,7 @@ const Profile = () => {
       <textarea
         className="col-8"
         id="textfield1"
+        ref={textboxRef}
         placeholder="How Are You Feeling Today?"
         onChange={(e) => setTextContent(e.target.value)}
       />
@@ -90,6 +85,7 @@ const Profile = () => {
           onClick={() => {
             sendData();
             setTextContent("");
+            textboxRef.current.value=""
           }}
         >
           make your daily post!
@@ -100,7 +96,7 @@ const Profile = () => {
           <div className="col-3">{post.emoji}</div>
           <div className="col-3">{post.text_content}</div>
           <div className="col-3">{getTimestamp(post.created_at)}</div>
-          <div className="col-3 btn btn-primary">
+          <div className="col-3 btn btn-primary" onClick={() => handleDelete(post)}>
             delete post
           </div>
         </div>
