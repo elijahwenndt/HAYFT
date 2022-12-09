@@ -1,7 +1,7 @@
 import axios from 'axios'
 import authHeader from './auth.headers';
 import { API_URL, REFRESH_ENDPOINT } from './auth.constants';
-
+import toast, { Toaster } from "react-hot-toast";
 /**
  * Create an Axios Client with defaults
  */
@@ -24,7 +24,7 @@ client.interceptors.response.use(
       error.response.status === 401 &&
       error.response.statusText === "Unauthorized") {
       const user = localStorage.getItem('user');
-
+      
       if (user) {
         const tokenParts = JSON.parse(atob(user.refresh.split('.')[1]));
 
@@ -46,6 +46,7 @@ client.interceptors.response.use(
             })
             .catch(err => {
               console.log(err)
+              
             });
         } else {
           console.log("Refresh token is expired", tokenParts.exp, now);
@@ -82,6 +83,7 @@ const request = async (opts) => {
     console.error('Request Failed:', error.config);
 
     if (error.response) {
+      
       // Request was made but server responded with something
       // other than 2xx
       console.error('Status:', error.response.status);

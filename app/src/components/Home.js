@@ -1,7 +1,19 @@
 import { useGlobalState } from "../context/GlobalState";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Home(props) {
+    let navigate = useNavigate();
+    const [state] = useGlobalState();
+    function navigationstuff() {
+        if (!state.currentUser) {
+            navigate("/login")
+        }
+        else {
+            navigate("/profile")
+        }
+    }
+
     return (
     <>
     {/* <Navbar handleClick={props.handleClick}/> */}
@@ -17,9 +29,9 @@ export default function Home(props) {
             </div>
             <div className="col-10 bg-light rounded shadow text-center p-3 my-3">
                 <h3>So, how does it work?</h3>
-                <p>It's easy! First, you select an emoji to express how you feeling, Then you make a text post below, explaining why you felt that way. After you make your selection you submit your post. Your post will then be saved and displayed below. Using HAYFT, you can only make one post per day. This allows you to take a collective consideration of your whole day before posting. Hopefully you can utilize HAYFT to journal about your day, as well as expressing how the activities and events that occurred over the day made you feel. </p>
+                <p>It's easy! First, you select an emoji to express how you feeling, Then you make a text post below, explaining why you felt that way. After you make your selection you submit your post. Your post will then be saved and displayed below. Using HAYFT, you can make many posts throughout the day to track how you are feeling. This allows you to take a collective consideration of your feelings throughout the day and have the ability to reflect on those feelings. Hopefully you can utilize HAYFT to journal about your day, as well as expressing how the activities and events that occurred over the day made you feel. </p>
                 <h5>So...</h5>
-                <button className="btn btn-primary">How Are You Feeling Today?</button>
+                <button className="btn btn-primary" onClick={()=> navigationstuff()}>How Are You Feeling Today?</button>
             </div>
             </div>
             {/* <footer className="bg-primary text-center text-light p-3">placeholder</footer> */}
