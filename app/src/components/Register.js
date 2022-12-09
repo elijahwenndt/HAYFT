@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import AuthService from "./../services/auth.service";
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -17,17 +19,27 @@ const Register = () => {
       [key]: value
     })
   }
-
+  let navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
     AuthService.register(user)
+    toast.success("Successfully registered! Proceed to login!");
+    navigate('/login')
   }
 
   return (
-    <div className="c-form">
+    <div className="container w-75 rounded vh-100">
+    <div className="row bg-primary text-center text-white rounded-top p-3">
+      <div className="col-12 fs-4 fw-bold">Register Account</div>
+    </div>
+    <div className="row justify-content-center text-center rounded">
+    <div className="c-form bg-light">
       <form onSubmit={handleRegister}>
         <div>
+        <div className="col-12 mt-3 fw-bold">
           <label htmlFor="username">Username:</label>
+          </div>
+          <div className="col-12">
           <input
             type="text"
             id="username"
@@ -35,19 +47,13 @@ const Register = () => {
             onChange={(e) => handleChange('username', e.target.value)}
             required
           />
+          </div>
         </div>
-        {/* <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            onChange={(e) => handleChange('email', e.target.value)}
-            required
-          />
-        </div> */}
         <div>
+        <div className="col-12 fw-bold">
           <label htmlFor="pass">Password (8 characters minimum):</label>
+          </div>
+          <div className="col-12">
           <input
             type="password"
             id="pass"
@@ -56,9 +62,13 @@ const Register = () => {
             required
             onChange={(e) => handleChange('password', e.target.value)}
           />
+          </div>
         </div>
         <div>
+        <div className="col-12 fw-bold">
           <label htmlFor="passConf">Confirm Password:</label>
+          </div>
+          <div className="col-12">
           <input
             type="password"
             id="passConf"
@@ -67,38 +77,23 @@ const Register = () => {
             required
             onChange={(e) => handleChange('passwordConf', e.target.value)} />
         </div>
-        {/* <div>
-          <label htmlFor="firstName">First Name:</label>
-          <input
-            type="text"
-            id="firstName"
-            name="fname"
-          
-            required
-            onChange={(e) => handleChange('firstName', e.target.value)} />
         </div>
-        <div>
-          <label htmlFor="lastName">Last Name:</label>
-          <input
-            type="text"
-            id="lastName"
-            name="lname"
-            required
-            onChange={(e) => handleChange('lastName', e.target.value)} />
-        </div> */}
         <input
+          className="my-3 text-white bg-primary rounded p-2"
+          id="bordertest"
           type="submit"
           value="Register"
           disabled={(
             user.password &&
             user.password.length >= 8 &&
             user.password === user.passwordConf
-            // user.firstName &&
-            // user.lastName &&
-            // user.email
           ) ? false : true}
         />
       </form>
+      
+    </div>
+    </div>
+    <Toaster />
     </div>
   )
 

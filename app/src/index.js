@@ -13,6 +13,7 @@ import {
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
+import Home from './components/Home';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="login" element={<Login />} />
+          <Route path="" element={<Home />} />
           <Route path="register" element={<Register />} />
           <Route path="profile" element={<Profile />} />
         </Route>

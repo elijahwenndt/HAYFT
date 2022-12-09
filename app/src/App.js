@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "./Navbar"
-import HomePage from "./Homepage";
-import Postpage from "./Postpage"
 import NavBarRR from "./components/NavbarRR";
+import Home from "./components/Home";
 import { GlobalProvider } from './context/GlobalState';
 
 export default function App() {
