@@ -28,15 +28,15 @@ const Login = () => {
   }
 
   return (
-    <div className="container w-75 vh-100">
-      <div className="row bg-primary text-center text-white rounded-top p-2 justify-content-center align-items-center">
+    <div className="container w-75 rounded vh-100">
+      <div className="row bg-primary text-center text-white rounded-top p-3">
         <div className="col-12 fs-4 fw-bold">Log In</div>
       </div>
-      
-    <div className="c-form bg-light p-2">
+      <div className="row justify-content-center text-center rounded">
+    <div className="c-form bg-light">
       <form onSubmit={handleLogin}>
         <div>
-          <div className="col-12 fw-bold">
+          <div className="col-12 mt-3 fw-bold">
           <label htmlFor="username">Username</label>
           </div>
           <div className="col-12">
@@ -73,7 +73,7 @@ const Login = () => {
       </form>
     </div>
     </div>
-    
+    </div>
   )
 
 }

@@ -80,7 +80,7 @@ const Profile = () => {
   return (
     <div className="container">
       <div className="row justify-content-center mb-2">
-        <h1>{state.currentUser.user_id}</h1>
+        {/* <h1>{state.currentUser.user_id}</h1> */}
         <div className="d-flex col-12 text-center justify-content-center">
           <Picker onEmojiClick={onEmojiClick} />
         </div>
@@ -93,6 +93,7 @@ const Profile = () => {
           )}
         </div>
         <textarea
+        rows="6"
           className="col-10"
           id="textfield1"
           ref={textboxRef}
@@ -108,7 +109,7 @@ const Profile = () => {
               textboxRef.current.value = "";
             }}
           >
-            make your daily post!
+            Post How You Are Feeling!
           </button>
         </div>
       </div>
