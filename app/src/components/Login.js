@@ -28,10 +28,18 @@ const Login = () => {
   }
 
   return (
-    <div className="c-form">
+    <div className="container w-75 vh-100">
+      <div className="row bg-primary text-center text-white rounded-top p-2 justify-content-center align-items-center">
+        <div className="col-12 fs-4 fw-bold">Log In</div>
+      </div>
+      
+    <div className="c-form bg-light p-2">
       <form onSubmit={handleLogin}>
         <div>
-          <label htmlFor="username">Username:</label>
+          <div className="col-12 fw-bold">
+          <label htmlFor="username">Username</label>
+          </div>
+          <div className="col-12">
           <input
             type="text"
             id="username"
@@ -39,9 +47,13 @@ const Login = () => {
             onChange={(e) => setUsername(e.target.value)}
             required
           />
+          </div>
         </div>
         <div>
+        <div className="col-12 fw-bold">
           <label htmlFor="pass">Password</label>
+          </div>
+          <div className="col-12">
           <input
             type="password"
             id="pass"
@@ -50,13 +62,18 @@ const Login = () => {
             required
             onChange={(e) => setPassword(e.target.value)}
           />
+          </div>
         </div>
         <input
+          id="bordertest"
+          className="my-3 text-white bg-primary rounded p-2"
           type="submit"
           value="Sign in"
         />
       </form>
     </div>
+    </div>
+    
   )
 
 }

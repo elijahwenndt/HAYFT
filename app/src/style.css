@@ -19,3 +19,7 @@ a:hover {
     text-decoration-line: underline;
     cursor: pointer;
   }
+#bordertest {
+  border: none;
+  background: none;
+}

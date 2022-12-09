@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import AuthService from "./../services/auth.service";
+import toast, { Toaster } from "react-hot-toast";
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -21,6 +22,7 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     AuthService.register(user)
+    toast.success("Successfully registered! Proceed to login!");
   }
 
   return (
@@ -99,6 +101,7 @@ const Register = () => {
           ) ? false : true}
         />
       </form>
+      <Toaster />
     </div>
   )
 
