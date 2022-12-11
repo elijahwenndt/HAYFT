@@ -7,23 +7,18 @@ import { format } from "date-fns";
 import parseJSON from "date-fns/parseJSON";
 import toast, { Toaster } from "react-hot-toast";
 
-// import isValid from "date-fns/isValid";
-// import parseISO from "date-fns/parseISO";
-
 const Profile = () => {
   const [state, dispatch] = useGlobalState();
   const [postData, setPostData] = useState([]);
   const [chosenEmoji, setChosenEmoji] = useState("");
   const [textContent, setTextContent] = useState("");
-  // const [input, setInput] = useState("")
+
   const textboxRef = useRef(null);
 
   const onEmojiClick = (emojiObject, event) => {
-    // console.log(event);
     setChosenEmoji(emojiObject);
   };
 
-  // console.log({ chosenEmoji });
   useEffect(() => {
     async function getData() {
       let options = {
@@ -48,7 +43,7 @@ const Profile = () => {
       postData: postData,
     });
   }, [postData]);
-  
+
   async function sendData() {
     let options = {
       url: "posts/",
@@ -62,18 +57,13 @@ const Profile = () => {
     try {
       let resp = await request(options);
       setPostData([resp.data, ...postData]);
-      // await dispatch({
-      //   postData: resp.data,
-      // });
-      // localStorage.setItem("data", JSON.stringify(postData))
+
       toast.success("Post successful!");
     } catch (error) {
       toast.error(
         "Please make sure you have selected an emoji and filled in the textbox!"
       );
     }
-    // toast.success("Post successful!");
-    // toast.error('This is an error!');
   }
 
   function getTimestamp(displayDate) {
@@ -91,15 +81,14 @@ const Profile = () => {
     setPostData(postData.filter((p) => p.id !== post.id));
     toast.success("Post Deleted!");
   }
-  // console.log(postData);
+
   return (
     <div className="container">
       <div className="row justify-content-center mb-2">
-        {/* <h1>{state.currentUser.user_id}</h1> */}
         <div className="d-flex col-12 text-center justify-content-center">
           <Picker onEmojiClick={onEmojiClick} />
         </div>
-        <div className="col-7 text-center fs-2">
+        <div className="col-7 text-center my-2 fs-2">
           {" "}
           {chosenEmoji ? (
             <div>You chose: {chosenEmoji.emoji}</div>
@@ -109,7 +98,7 @@ const Profile = () => {
         </div>
         <textarea
           rows="6"
-          className="col-10"
+          className="col-10 rounded border border-0"
           id="textfield1"
           ref={textboxRef}
           placeholder="How Are You Feeling Today?"

@@ -14,21 +14,16 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    AuthService.login(username, password).then(async (resp) => {
-      // toast.error("error test");
-      // try {
-      let data = jwtDecode(resp.access);
+    AuthService.login(username, password)
+      .then(async (resp) => {
+        let data = jwtDecode(resp.access);
         await dispatch({
           currentUserToken: resp.access,
           currentUser: data,
         });
         navigate("/profile");
-        // toast.error("error test");
-      // } catch {
-      //   toast.error("error test");
-      // }
-    })
-    .catch(error => toast.error("username or password incorrect!"))
+      })
+      .catch((error) => toast.error("username or password incorrect!"));
   };
 
   return (
