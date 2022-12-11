@@ -34,6 +34,9 @@ const Profile = () => {
         },
       };
       let resp = await request(options);
+      await dispatch({
+        postData:resp.data
+      })
       setPostData(resp.data);
     }
     getData();
@@ -77,7 +80,7 @@ const Profile = () => {
     setPostData(postData.filter((p) => p.id !== post.id));
     toast.success("Post Deleted!");
   }
-
+  console.log(postData)
   return (
     <div className="container">
       <div className="row justify-content-center mb-2">

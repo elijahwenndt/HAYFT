@@ -32,7 +32,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container w-75 rounded vh-100">
+    <div className="container w-75 rounded">
       <div className="row bg-primary text-center text-white rounded-top p-3">
         <div className="col-12 fs-4 fw-bold">Log In</div>
       </div>

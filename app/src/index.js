@@ -14,6 +14,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Home from './components/Home';
+import YourJourney from './components/YourJourney';
+import { useState } from './components/Profile';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,6 +27,7 @@ root.render(
           <Route path="" element={<Home />} />
           <Route path="register" element={<Register />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="yourjourney" element={<YourJourney />} />
         </Route>
       </Routes>
     </Router>
