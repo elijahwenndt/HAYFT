@@ -1,0 +1,34 @@
+body {
+    background-color: lightblue;
+}
+
+a:link {
+    color: white;
+    text-decoration: none;
+  }
+
+a:visited {
+    color: white;
+  }
+
+a:hover {
+    text-decoration-line: underline;
+  }
+
+#links:hover {
+    text-decoration-line: underline;
+    cursor: pointer;
+  }
+#bordertest {
+  border: none;
+  background: none;
+}
+button:disabled,
+button[disabled]{
+  color: #666666;
+  
+}
+button {
+  color: white;
+  background-color: blue
+}
