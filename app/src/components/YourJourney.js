@@ -6,11 +6,10 @@ import { useState } from "react";
 export default function YourJourney() {
   const [state] = useGlobalState();
   const [ localCheck ] = useState(() => {
-
     return JSON.parse(localStorage.getItem("data"))
   });
   // console.log("postData: " + state.postData)
-  const [dateFilter, setDateFilter] = useState(undefined);
+  const [dateFilterState, setDateFilter] = useState(undefined);
   // let navigate = useNavigate();
   // if (!state.postData) {
   //   console.log('hello')
@@ -18,22 +17,22 @@ export default function YourJourney() {
   // }
   // console.log(state.postData);
   // let obj = [...localCheck]
-  console.log("local: " + localCheck)
+  // console.log("local: " + localCheck)
   // else {
-  let DateFilter = localCheck.filter(
-    (date) => date.date_reference === dateFilter
+  let dateFilter = localCheck.filter(
+    (date) => date.date_reference === dateFilterState
   );
   
-  if (dateFilter !== undefined ) {
+  if (dateFilterState !== undefined ) {
     return (
       <>
         <div className="container">
         <div className="row text-center justify-content-center my-3">
-          <div className="col-12">
+          <div className="col-md-10 col-sm-12">
             <div className="card w-100 bg-light rounded shadow">
             <div className="card-body text-center ">
             <div className="card-title fw-bold fs-1">This is Your Journey</div>
-            <div className="card-text">Use this page to filter your posts by date so you can reflect on your past feelings.</div>
+            <div className="card-text">Use this page to filter your posts by date so you can reflect on your past feelings. Type the date you wish to see into the textbox formatted as YYYY-MM-DD.</div>
         <input
         className="rounded my-2"
           type="text"
@@ -44,9 +43,9 @@ export default function YourJourney() {
         </div>
         </div>
         </div>
-          <div className="row g-3">
-            {DateFilter.map((post) => (
-              <div key={post.id} className="col-12 d-flex align-items-stretch">
+          <div className="row g-3 justify-content-center">
+            {dateFilter.map((post) => (
+              <div key={post.id} className="col-md-10 col-sm-12 d-flex align-items-stretch">
                 <div className="card w-100 bg-light rounded shadow">
                   <div className="card-body text-center ">
                     <div className="card-title fs-1">{post.emoji}</div>
@@ -63,16 +62,16 @@ export default function YourJourney() {
       </>
     );
   }
-  if (dateFilter === undefined) {
+  else {
     return (
       <>
         <div className="container">
         <div className="row text-center justify-content-center my-3">
-          <div className="col-12">
+          <div className="col-md-10 col-sm-12">
             <div className="card w-100 bg-light rounded shadow">
             <div className="card-body text-center ">
             <div className="card-title fw-bold fs-1">This is Your Journey</div>
-            <div className="card-text">Use this page to filter your posts by date so you can reflect on your past feelings. Type the date you wish to see into the textbox</div>
+            <div className="card-text">Use this page to filter your posts by date so you can reflect on your past feelings. Type the date you wish to see into the textbox formatted as YYYY-MM-DD.</div>
         <input
         className="rounded my-2"
           type="text"
@@ -83,9 +82,9 @@ export default function YourJourney() {
         </div>
         </div>
         </div>
-          <div className="row g-3">
-            {state.postData.map((post) => (
-              <div key={post.id} className="col-12 d-flex align-items-stretch">
+          <div className="row g-3 justify-content-center">
+            {localCheck.map((post) => (
+              <div key={post.id} className="col-md-10 col-sm-12 d-flex align-items-stretch">
                 <div className="card w-100 bg-light rounded shadow">
                   <div className="card-body text-center ">
                     <div className="card-title fs-1">{post.emoji}</div>

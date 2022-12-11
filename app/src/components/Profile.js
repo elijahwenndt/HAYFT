@@ -17,7 +17,7 @@ const Profile = () => {
   const [textContent, setTextContent] = useState("");
   // const [input, setInput] = useState("")
   const textboxRef = useRef(null);
-  
+
   const onEmojiClick = (emojiObject, event) => {
     // console.log(event);
     setChosenEmoji(emojiObject);
@@ -35,17 +35,20 @@ const Profile = () => {
       };
       let resp = await request(options);
       await dispatch({
-        postData:resp.data
-      })
+        postData: resp.data,
+      });
       setPostData(resp.data);
     }
     getData();
   }, []);
-  
-  useEffect(() => {
-    localStorage.setItem("data", JSON.stringify(postData))
-  }, [postData]);
 
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(postData));
+    dispatch({
+      postData: postData,
+    });
+  }, [postData]);
+  
   async function sendData() {
     let options = {
       url: "posts/",
@@ -59,6 +62,10 @@ const Profile = () => {
     try {
       let resp = await request(options);
       setPostData([resp.data, ...postData]);
+      // await dispatch({
+      //   postData: resp.data,
+      // });
+      // localStorage.setItem("data", JSON.stringify(postData))
       toast.success("Post successful!");
     } catch (error) {
       toast.error(
@@ -84,7 +91,7 @@ const Profile = () => {
     setPostData(postData.filter((p) => p.id !== post.id));
     toast.success("Post Deleted!");
   }
-  console.log(postData)
+  // console.log(postData);
   return (
     <div className="container">
       <div className="row justify-content-center mb-2">
@@ -101,7 +108,7 @@ const Profile = () => {
           )}
         </div>
         <textarea
-        rows="6"
+          rows="6"
           className="col-10"
           id="textfield1"
           ref={textboxRef}
@@ -124,27 +131,27 @@ const Profile = () => {
       <div className="row g-4">
         {postData.map((post) => (
           <div
-          key={post.id}
-          className="col-md-6 col-sm-12 d-flex align-items-stretch"
+            key={post.id}
+            className="col-md-6 col-sm-12 d-flex align-items-stretch"
           >
-          <div className="card w-100 bg-light rounded shadow">
-            <div className="card-body text-center d-flex flex-column justify-content-center">
-              <div className="card-title fs-1">{post.emoji}</div>
-              <div className="card-text fw-bold fs-3">
-                {getTimestamp(post.created_at)}
-              </div>
-              <div className="card-text mt-auto mx-auto mb-3">
-                {post.text_content}
-              </div>
-          
-              <div
-                className="btn mt-auto btn-outline-danger mx-auto w-50"
-                onClick={() => handleDelete(post)}
-              >
-                delete post
+            <div className="card w-100 bg-light rounded shadow">
+              <div className="card-body text-center d-flex flex-column justify-content-center">
+                <div className="card-title fs-1">{post.emoji}</div>
+                <div className="card-text fw-bold fs-3">
+                  {getTimestamp(post.created_at)}
+                </div>
+                <div className="card-text mt-auto mx-auto mb-3">
+                  {post.text_content}
+                </div>
+
+                <div
+                  className="btn mt-auto btn-outline-danger mx-auto w-50"
+                  onClick={() => handleDelete(post)}
+                >
+                  delete post
+                </div>
               </div>
             </div>
-          </div>
           </div>
         ))}
       </div>
@@ -158,7 +165,8 @@ export default Profile;
 // (e) => {setEmoji(e.target.value)}
 // (i) => handleClick(i)
 // onClick={handleDelete(post)}
-{/* <div
+{
+  /* <div
 key={post.id}
 className="col-md-6 col-sm-12 d-flex align-items-stretch"
 >
@@ -180,4 +188,5 @@ className="col-md-6 col-sm-12 d-flex align-items-stretch"
     </div>
   </div>
 </div>
-</div> */}
+</div> */
+}
