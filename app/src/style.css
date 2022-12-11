@@ -23,3 +23,12 @@ a:hover {
   border: none;
   background: none;
 }
+button:disabled,
+button[disabled]{
+  color: #666666;
+  
+}
+button {
+  color: white;
+  background-color: blue
+}
