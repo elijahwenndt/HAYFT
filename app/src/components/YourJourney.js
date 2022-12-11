@@ -6,19 +6,25 @@ import { useState } from "react";
 export default function YourJourney() {
   const [state] = useGlobalState();
   const [ localCheck ] = useState(() => {
+
     return JSON.parse(localStorage.getItem("data"))
   });
+  // console.log("postData: " + state.postData)
   const [dateFilter, setDateFilter] = useState(undefined);
-
-  console.log(state.postData);
-  let obj = [...localCheck]
-  console.log("local: " + obj)
-
-  let DateFilter = state.postData.filter(
+  // let navigate = useNavigate();
+  // if (!state.postData) {
+  //   console.log('hello')
+  //   navigate('/profile')
+  // }
+  // console.log(state.postData);
+  // let obj = [...localCheck]
+  console.log("local: " + localCheck)
+  // else {
+  let DateFilter = localCheck.filter(
     (date) => date.date_reference === dateFilter
   );
-
-  if (dateFilter !== undefined) {
+  
+  if (dateFilter !== undefined ) {
     return (
       <>
         <div className="container">
@@ -27,7 +33,7 @@ export default function YourJourney() {
             <div className="card w-100 bg-light rounded shadow">
             <div className="card-body text-center ">
             <div className="card-title fw-bold fs-1">This is Your Journey</div>
-            <div className="card-text">Use this page to filter your posts by date so you can reflect on your past feelings. Type the date you wish to see into the textbox formatted as YYYY-MM-DD.</div>
+            <div className="card-text">Use this page to filter your posts by date so you can reflect on your past feelings.</div>
         <input
         className="rounded my-2"
           type="text"
@@ -96,6 +102,7 @@ export default function YourJourney() {
       </>
     );
   }
+// }
   // if (!state.postData) {
   //   return (
   //     <div>return to profile</div>
