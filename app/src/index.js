@@ -15,7 +15,7 @@ import Register from './components/Register';
 import Profile from './components/Profile';
 import Home from './components/Home';
 import YourJourney from './components/YourJourney';
-import { useState } from './components/Profile';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

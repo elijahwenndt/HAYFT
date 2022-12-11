@@ -41,6 +41,10 @@ const Profile = () => {
     }
     getData();
   }, []);
+  
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(postData))
+  }, [postData]);
 
   async function sendData() {
     let options = {
@@ -134,7 +138,7 @@ const Profile = () => {
               </div>
           
               <div
-                className="btn mt-auto btn-outline-danger mx-auto w-25"
+                className="btn mt-auto btn-outline-danger mx-auto w-50"
                 onClick={() => handleDelete(post)}
               >
                 delete post
