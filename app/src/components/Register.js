@@ -23,10 +23,10 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     AuthService.register(user)
-    toast.success("Successfully registered! Proceed to login!");
-    navigate('/login')
+    // toast.error("Successfully registered! Proceed to login!");
+    // navigate('/login')
   }
-
+// console.log(resp)
   return (
     <div className="container w-75 rounded">
     <div className="row bg-primary text-center text-white rounded-top p-3">
@@ -79,7 +79,7 @@ const Register = () => {
         </div>
         </div>
         <input
-          className="my-3 text-white bg-primary rounded p-2"
+          className="my-3 rounded p-2"
           id="bordertest"
           type="submit"
           value="Register"
