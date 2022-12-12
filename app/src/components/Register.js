@@ -29,8 +29,8 @@ const Register = () => {
 
   return (
     <div className="container w-75 rounded">
-      <div className="row bg-primary text-center text-white rounded-top p-3">
-        <div className="col-12 fs-4 fw-bold">Register Account</div>
+      <div className="row bg-primary text-center rounded-top p-3">
+        <div className="col-12 text-white fs-4 fw-bold">Register Account</div>
       </div>
       <div className="row justify-content-center text-center rounded">
         <div className="c-form bg-light">
@@ -80,7 +80,7 @@ const Register = () => {
               </div>
             </div>
             <input
-              className="my-3  border border-2 border-secondary rounded p-2"
+              className="my-3 border border-2 border-secondary rounded p-2"
               id="bordertest"
               type="submit"
               value="Register"

@@ -23,8 +23,8 @@ a:hover {
   border: none;
   background: none;
 }
-button:disabled,
-button[disabled]{
-  color: #666666;
+input:disabled,
+input[disabled]{
+  color: #cccaca;
   
 }
