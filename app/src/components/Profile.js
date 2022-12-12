@@ -129,7 +129,7 @@ const Profile = () => {
                 <div className="card-text fw-bold fs-3">
                   {getTimestamp(post.created_at)}
                 </div>
-                <div className="card-text mt-auto mx-auto mb-3">
+                <div className="card-text text-break mt-auto mx-auto mb-3">
                   {post.text_content}
                 </div>
 

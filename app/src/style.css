@@ -33,6 +33,7 @@ input {
   color: black;
 }
 
-.card-text, .card-body, .card {
+/* .card-text, .card-body, .card {
   overflow-wrap: break-all !important;
-}
+  width: 100%
+} */
