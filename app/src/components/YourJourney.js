@@ -10,7 +10,7 @@ export default function YourJourney() {
   });
 
   const [dateFilterState, setDateFilter] = useState("");
-  console.log(dateFilterState.length)
+  // console.log(dateFilterState.length)
   let dateFilter = localCheck.filter(
     (date) => date.date_reference === dateFilterState
   );
