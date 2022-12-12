@@ -9,13 +9,13 @@ export default function YourJourney() {
     return JSON.parse(localStorage.getItem("data"));
   });
 
-  const [dateFilterState, setDateFilter] = useState(undefined);
-
+  const [dateFilterState, setDateFilter] = useState("");
+  console.log(dateFilterState.length)
   let dateFilter = localCheck.filter(
     (date) => date.date_reference === dateFilterState
   );
-
-  if (dateFilterState !== undefined) {
+  
+  if (dateFilterState !== "") {
     return (
       <>
         <div className="container">
@@ -62,7 +62,7 @@ export default function YourJourney() {
         </div>
       </>
     );
-  } else {
+  } if (dateFilterState === "") {
     return (
       <>
         <div className="container">

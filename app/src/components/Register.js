@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AuthService from "./../services/auth.service";
 import { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -18,10 +19,11 @@ const Register = () => {
       [key]: value,
     });
   };
-
+  let navigate = useNavigate()
   const handleRegister = (e) => {
     e.preventDefault();
     AuthService.register(user);
+    navigate('/login')
   };
 
   return (
