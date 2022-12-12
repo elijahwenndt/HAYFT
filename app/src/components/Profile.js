@@ -117,7 +117,7 @@ const Profile = () => {
           </button>
         </div>
       </div>
-      <div className="row g-4">
+      <div className="row g-4 mb-3 justify-content-center">
         {postData.map((post) => (
           <div
             key={post.id}
