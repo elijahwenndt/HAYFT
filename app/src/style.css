@@ -28,3 +28,7 @@ input[disabled]{
   color: #cccaca;
   
 }
+
+input {
+  color: black;
+}
