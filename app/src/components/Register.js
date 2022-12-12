@@ -79,7 +79,7 @@ const Register = () => {
                 />
               </div>
             </div>
-            <input
+            <button
               className="my-3  border border-2 border-secondary rounded p-2"
               id="bordertest"
               type="submit"
