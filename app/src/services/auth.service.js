@@ -6,7 +6,8 @@ import {
   
   import request from "./api.request";
 import { toast } from 'react-hot-toast';
-  
+import { useNavigate } from 'react-router-dom';
+let navigate = useNavigate
   class AuthService {
     
     constructor() {
@@ -53,6 +54,7 @@ import { toast } from 'react-hot-toast';
       .then(() => {
         this.login(username, password)
         toast.success("successfully registered! proceed to log in")
+        // navigate('/login')
       }).catch(error => toast.error("username already exists"))
     }
   
