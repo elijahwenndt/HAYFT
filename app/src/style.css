@@ -33,6 +33,6 @@ input {
   color: black;
 }
 
-.card-text {
-  overflow-wrap: break-word
+.card-text, .card-body, .card {
+  overflow-wrap: break-all !important;
 }
