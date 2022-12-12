@@ -123,7 +123,7 @@ const Profile = () => {
             key={post.id}
             className="col-md-6 col-sm-12 d-flex align-items-stretch"
           >
-            <div className="card w-100 bg-light rounded shadow">
+            <div className="card w-100 bg-light rounded shadow" id ="overflowcheck">
               <div className="card-body text-center d-flex flex-column justify-content-center">
                 <div className="card-title fs-1">{post.emoji}</div>
                 <div className="card-text fw-bold fs-3">

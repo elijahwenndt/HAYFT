@@ -33,6 +33,6 @@ input {
   color: black;
 }
 
-textarea {
-  overflow-wrap: break-word;
+.card-text {
+  overflow-wrap: break-word
 }
