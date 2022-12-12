@@ -54,7 +54,7 @@ let navigate = useNavigate
       .then(() => {
         this.login(username, password)
         toast.success("successfully registered! proceed to log in")
-        // navigate('/login')
+        navigate('/login')
       }).catch(error => toast.error("username already exists"))
     }
   
