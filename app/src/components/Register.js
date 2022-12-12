@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AuthService from "./../services/auth.service";
-import { Toaster } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -23,7 +23,8 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     AuthService.register(user);
-    navigate('/login')
+    // toast.success('registration successful, proceed to login')
+    // navigate('/login')
   };
 
   return (
